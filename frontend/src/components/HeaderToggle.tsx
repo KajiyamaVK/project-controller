@@ -8,20 +8,21 @@ export function HeaderToggle() {
     const html = document.querySelector('html')
     if (!html) return
     const theme = localStorage.getItem('el-theme')
-    if (theme) {
-      const darkModeOn = theme === 'dracula'
+    if (theme && (theme === 'dark2' || theme === 'light2')) {
+      const darkModeOn = theme === 'dark2'
       setDarkMode(darkModeOn)
       html.setAttribute('data-theme', theme)
     } else {
+      console.log('else')
       // Atribuir o tema do SO
       const darkModeOn = window.matchMedia(
         '(prefers-color-scheme: dark)',
       ).matches
       if (darkModeOn) {
-        html.setAttribute('data-theme', 'dracula')
+        html.setAttribute('data-theme', 'dark2')
         setDarkMode(true)
       } else {
-        html.setAttribute('data-theme', 'light')
+        html.setAttribute('data-theme', 'light2')
         setDarkMode(false)
       }
     }
@@ -31,13 +32,13 @@ export function HeaderToggle() {
     const html = document.querySelector('html')
     if (!html) return
     const theme = html.getAttribute('data-theme')
-    if (theme === 'light') {
-      html.setAttribute('data-theme', 'dracula')
-      localStorage.setItem('el-theme', 'dracula')
+    if (theme === 'light2') {
+      html.setAttribute('data-theme', 'dark2')
+      localStorage.setItem('el-theme', 'dark2')
       setDarkMode(true)
     } else {
-      html.setAttribute('data-theme', 'light')
-      localStorage.setItem('el-theme', 'light')
+      html.setAttribute('data-theme', 'light2')
+      localStorage.setItem('el-theme', 'light2')
       setDarkMode(false)
     }
   }
@@ -49,7 +50,11 @@ export function HeaderToggle() {
         type="checkbox"
         className="toggle"
         checked={darkMode}
-        onChange={toggleTheme}
+        defaultChecked={false}
+        onClick={toggleTheme}
+        // eslint-disable-next-line @typescript-eslint/no-empty-function
+        onChange={() => {}}
+        disabled={false}
       />
       <span>🌙</span>
     </div>
