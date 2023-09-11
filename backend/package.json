@@ -1,0 +1,28 @@
+{
+  "name": "project-controller",
+  "version": "1.0.0",
+  "description": "Backend of the project controller application. ",
+  "main": "src/server.ts",
+  "scripts": {
+    "dev": "npx tsx src/server.ts ",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "npx tsc src/server.ts",
+    "start": "node src/server.js"
+  },
+  "author": "Victor Kajiyama",
+  "license": "ISC",
+  "dependencies": {
+    "@fastify/cors": "^8.3.0",
+    "fastify": "^4.23.0",
+    "knex": "^2.5.1",
+    "mysql2": "^3.6.1",
+    "sqlite3": "^5.1.6"
+  },
+  "devDependencies": {
+    "@rocketseat/eslint-config": "^2.1.0",
+    "@types/node": "^20.6.0",
+    "eslint": "^8.49.0",
+    "tsx": "^3.12.8",
+    "typescript": "^5.2.2"
+  }
+}
